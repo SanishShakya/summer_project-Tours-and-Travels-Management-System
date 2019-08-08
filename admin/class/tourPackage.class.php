@@ -21,7 +21,7 @@ require_once "CRUD.php";
  	}
  	function create()
  	{
- 		echo $sql = "insert into tbl_tourPackage (packageName,description,amount,category,days,photo,status,location,created_at,feature,created_by) values ('$this->packageName','$this->description','$this->amount','$this->category','$this->days','$this->photo','$this->status','$this->location','$this->created_at','$this->feature','$this->created_by')"; 
+ 		$sql = "insert into tbl_tourPackage (packageName,description,amount,category,days,photo,status,location,created_at,feature,created_by) values ('$this->packageName','$this->description','$this->amount','$this->category','$this->days','$this->photo','$this->status','$this->location','$this->created_at','$this->feature','$this->created_by')"; 
  		return $this->insert($sql);
  	}
  	
@@ -43,6 +43,19 @@ require_once "CRUD.php";
  	function edit(){
  		$sql="update tbl_admin set  name='$this->name' , username='$this->username', email='$this->email', phone='$this->phone', address='$this->address', password='$this->password', status='$this->status', image='$this->image' where adminId='$this->adminId'";
  		return $this->update($sql);
+ 	}
+ 	function getTourPackages(){
+ 		$sql = "select tourId,packageName,description,amount,category,days,photo,location,created_at,feature from tbl_tourPackage where status = 1 order by created_at desc";
+ 	 	return $this->select($sql);
+ 	}
+ 	function getLimitTourPackages(){
+ 		$sql = "select tourId,packageName,description,amount,category,days,photo,location,created_at,feature from tbl_tourPackage where status = 1 order by created_at desc limit 3";
+ 	 	return $this->select($sql);
+ 	}
+ 	function selectTourById()
+ 	{
+ 	 $sql = "select * from tbl_tourPackage where tourId='$this->tourId'";
+ 	 	return $this->select($sql);
  	}
  }
 ?>

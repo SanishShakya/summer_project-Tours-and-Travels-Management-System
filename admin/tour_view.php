@@ -70,7 +70,7 @@
                   </tr>
                   <tr>
                     <th>Images</th>
-                    <td><img src="images/<?php echo $tours[0]->image?>" width="220" height="150"></td>
+                    <td><img src="images/<?php echo $tours[0]->photo?>" width="220" height="150"></td>
                   </tr>
                   <tr>
                     <th>Created By</th>

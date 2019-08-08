@@ -1,5 +1,15 @@
 <?php
 	require_once "object.php";
+	@session_start();
+if(isset($_COOKIE['email'])){
+  $customer->set('email',$_COOKIE['email']);
+  $customerdata = $customer->getCustomerByEmail();
+    $_SESSION['customer_email'] = $_COOKIE['email'];
+    $_SESSION['customer_name'] = $customerdata[0]->name;
+    $_SESSION['customer_id'] = $customerdata[0]->customerId;
+
+  header('location:tour_package.php');
+}
 
 	if(isset($_POST['btnLogin']))
 {
@@ -19,7 +29,18 @@ if(isset($_POST['password'])&& !empty($_POST['password'])&& trim($_POST['passwor
 if(count($err)==0){
   $customerdata = $customer->login();
   if(count($customerdata) == 1){
-    header('location:Tour_package.php');
+
+  	  if(isset($_POST['remember'])){
+      //set cookie
+      setcookie('email',$_POST['email'],time() + 7*24*60*60);
+     }
+
+    @session_start();
+    $_SESSION['customer_name'] = $customerdata[0]->name;
+    $_SESSION['customer_email'] = $customerdata[0]->email;
+    $_SESSION['customer_id'] = $customerdata[0]->customerId;
+
+    header('location:tour_package.php');
   }else{
     $err['btnLogin'] = 'Invalid Username and Password'; }
   }
@@ -64,19 +85,31 @@ if(count($err)==0){
                         <p class="alert alert-danger text-danger"><?php echo $err['btnLogin'] ?></p>
                       <?php } ?>
 
+                      <?php if(isset($err['login'])){ ?>
+                        <p class="alert alert-danger text-danger"><?php echo $err['login'] ?></p>
+                      <?php } ?>
+
+                      <?php if(isset($_GET['bookmsg']) && $_GET['bookmsg'] == 1){ ?>
+                        <p class="alert alert-danger text-danger">PLease Login to Access Booking</p>
+                      <?php } ?>
 			<form class="login100-form validate-form" action="" method="post">
 				<span class="login100-form-title p-b-37">
 					Login
 				</span>
 
 				<div class="wrap-input100 validate-input m-b-20" data-validate="Enter Email">
-					<input class="input100" type="email" name="email" placeholder="Email">
+					<input class="input100" type="email" name="email" placeholder="Email"  required="">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
-					<input class="input100" type="password" name="password" placeholder="password">
+					<input class="input100" type="password" name="password" placeholder="password"  required="">
 					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input m-b-25">
+					<input  type="checkbox" id="customCheck" name="remember" value="remember" style=" margin-left: 25%;">
+	               <span style="color: #4b2354; font-weight: bold;"> Remember Me</span>	
 				</div>
 
 				<div class="container-login100-form-btn">
@@ -89,6 +122,9 @@ if(count($err)==0){
 				<br>
 
 				<div class="text-center">
+					<a href="index.php" class="txt2 hov1">
+						Home |
+					</a>
 					<a href="register.php" class="txt2 hov1">
 						Sign Up
 					</a>

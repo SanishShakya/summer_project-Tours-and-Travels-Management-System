@@ -1,5 +1,5 @@
 <?php
-	interface CRUD{
+	interface CRUDD{
 		function create();
 		// function index($field = '*');
 		// function selectDataById();

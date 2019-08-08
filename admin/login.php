@@ -1,6 +1,6 @@
 <?php 
 require_once "object.php";
-session_start();
+@session_start();
 if(isset($_COOKIE['email'])){
   $user->set('email',$_COOKIE['email']);
   $userdata = $user->getUserByEmail();

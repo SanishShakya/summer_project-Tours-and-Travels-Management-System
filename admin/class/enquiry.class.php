@@ -7,7 +7,7 @@ require_once "CRUD.php";
 
  	function login()
  	{
-	 	$sql = "select * from tbl_admin where email='$this->email' and password='$this->password' and status=1";
+	 	$sql = "select * from tbl_customer where email='$this->email' and password='$this->password'";
 	 	return $this->select($sql);
  	}
  	function profile()
@@ -21,7 +21,7 @@ require_once "CRUD.php";
  	}
  	function create()
  	{
- 		$sql = "insert into tbl_booking (packageName,description,amount,category,days,image,status,location,created_at,feature,created_by) values ('$this->packageName','$this->description','$this->amount','$this->category','$this->days','$this->image','$this->status','$this->location','$this->created_at','$this->feature','$this->created_by')"; 
+ 		$sql = "insert into tbl_enquiry (name,subject,email,description,created_at) values ('$this->name','$this->subject','$this->email','$this->description','$this->created_at')"; 
  		return $this-> insert($sql);
  	}
  	

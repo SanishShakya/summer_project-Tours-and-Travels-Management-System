@@ -89,10 +89,10 @@ require_once "header.php";
 					<div class="contact_form_container">
 						<div class="contact_title">REGISTER</div><br>
 						<?php if(isset($status) && $status == true){ ?>
-        <p class="alert alert-success text-success">Admin Insert Success !!</p>
+        <p class="alert alert-success text-success">Customer Registration Success !!</p>
       <?php } ?>
       <?php if(isset($status) && $status == false){ ?>
-        <p class="alert alert-danger text-danger">Admin Insert Failed !!</p>
+        <p class="alert alert-danger text-danger">Customer Registration Failed !!</p>
       <?php } ?>
 						<form action="#" method="post" id="contact_form" class="contact_form">
 							<input type="text" id="contact_form_name" class="contact_form_name input_field" name="name" placeholder="Full Name" required="required" data-error="Name is required.">

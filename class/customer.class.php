@@ -1,7 +1,7 @@
 <?php
 require_once "common.class.php";
 require_once "CRUD.php";
- class Customer extends Common
+ class Customer extends Common1
  {
  	protected $customerID, $name, $username ,$email, $mobile, $address, $password, $gender;
 
@@ -14,6 +14,10 @@ require_once "CRUD.php";
  	function login()
  	{
 	 	$sql = "select * from tbl_customer where email='$this->email' and password='$this->password'";
+	 	return $this->select($sql);
+ 	}
+ 	function getCustomerByEmail(){
+ 		$sql = "select * from tbl_customer where email='$this->email'";
 	 	return $this->select($sql);
  	}
  	

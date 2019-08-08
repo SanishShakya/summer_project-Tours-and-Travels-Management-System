@@ -1,5 +1,5 @@
 <?php 
-	class Common{
+	class Common1{
 		protected $conn;
 
 		function set($attribute,$value)

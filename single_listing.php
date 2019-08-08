@@ -1,27 +1,27 @@
 <?php
-  @session_start();
- 
-  require_once "object.php";  
+	@session_start();
   require_once "admin/object.php";
+  $tour->set('tourId',$_GET['tourId']);
+	$tourIdPackage = $tour->selectTourById();
   $tourPackages = $tour->getTourPackages();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Packages</title>
+<title>Single Listing</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
 <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/offers_styles.css">
-<link rel="stylesheet" type="text/css" href="styles/offers_responsive.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
-<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/single_listing_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/single_listing_responsive.css">
 </head>
 
 <body>
@@ -68,6 +68,7 @@
 								<li class="main_nav_item"><a href="tour_package.php">Package</a></li>
 								<li class="main_nav_item"><a href="about.php">about us</a></li>
 								<li class="main_nav_item"><a href="enquiry.php">enquiry</a></li>
+							</ul>
 						</div>
 						<div class="content_search ml-lg-0 ml-auto">
 							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -114,7 +115,7 @@
 			<ul>
 				<li class="menu_item"><a href="index.html">home</a></li>
 				<li class="menu_item"><a href="about.html">about us</a></li>
-				<li class="menu_item"><a href="tour_package.<?php  ?>">Package</a></li>
+				<li class="menu_item"><a href="offers.html">offers</a></li>
 				<li class="menu_item"><a href="blog.html">news</a></li>
 				<li class="menu_item"><a href="contact.html">contact</a></li>
 			</ul>
@@ -124,45 +125,81 @@
 	<!-- Home -->
 
 	<div class="home">
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/about_background.jpg"></div>
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/single_background.jpg"></div>
 		<div class="home_content">
-			<div class="home_title">Tour Package</div>
+			<div class="home_title">Package Detail</div>
 		</div>
 	</div>
+
+	<!-- Offers -->
+
+	<div class="listing">
+
 	
 
-	<br>
-		<?php foreach($tourPackages as $tour){?>
-						<div class="offers_item rating_3">
-							<div class="row">
-								<div class="col-lg-1 temp_col"></div>
-								<div class="col-lg-3 col-1680-4">
-									<div class="offers_image_container">
-										<!-- Image by https://unsplash.com/@thoughtcatalog -->
-										<div class="offers_image_background"><img src="admin/images/<?php echo $tour->photo?>" width="100%" height="80%"></div>
-										<div class="offer_name" style="margin-bottom: 10%;"><a href="single_listing.php?tourId=<?php echo $tour->tourId?>"><?php echo $tour->packageName?></a></div>
-									</div>
+		<!-- Single Listing -->
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="single_listing">
+						
+						<!-- Hotel Info -->
+
+						<div class="hotel_info">
+
+							<!-- Title -->
+							<div class="hotel_title_container d-flex flex-lg-row flex-column">
+								<div class="hotel_title_content">
+									<h1 class="hotel_title"><?php echo $tourIdPackage[0]->packageName ?></h1>
+									
+									<div class="hotel_location"><i class="fa fa-map-marker" style="color: gray; font-size: 150%;"></i>  <?php echo $tourIdPackage[0]->location ?></div>
 								</div>
-								<div class="col-lg-8">
-									<div class="offers_content">
-										<div class="offers_price"><span style="color: #eda84a; font-size: 70%; font-weight: bold;">Rs.</span> <?php echo $tour->amount?><span>per person</span></div>
-										<p class="offers_text"><i class="fa fa-map-marker" style="color: gray; font-size: 150%;"></i>  <?php echo $tour->location?></p>
-										<p class="offers_text">Category: <?php echo $tour->category?></p>
-										<p class="offers_text">Days of Packages: <?php echo $tour->days?><span> days</span></p>
-										<p class="offers_text">Features: <?php echo $tour->feature?></p>
-										<?php if(isset($_SESSION['customer_id'])){?>
-										<div class="button book_button" style="margin-left: 80%;"><a href="booking.php">book<span></span><span></span><span></span></a></div>
-										<?php }else{ ?>
-										<div class="button book_button" style="margin-left: 80%;"><a href="login.php?bookmsg=1">book<span></span><span></span><span></span></a></div>
-										<?php } ?>
-										<div class="offer_reviews">
-										
-											
-										</div>
+								<div class="hotel_title_button ml-lg-auto text-lg-right">
+									<div class="button book_button trans_200"><a href="#">book<span></span><span></span><span></span></a></div>
+									<div class="hotel_map_link_container">
 									</div>
 								</div>
 							</div>
+
+							<!-- Listing Image -->
+
+							<div class="hotel_image">
+								<img src="admin/images/<?php echo $tourIdPackage[0]->photo?>" width="100%" height="500px"></img>
+								
+							</div>
+							<!-- Hotel Gallery -->
+
+
+							<!-- Hotel Info Text -->
+								<div class="hotel_info_text">
+									<p>Features:<br>&nbsp;&nbsp;&nbsp;<?php echo $tourIdPackage[0]->feature ?></p>
+								</div>
+								<div class="hotel_info_text">
+									<p>Category:<br>&nbsp;&nbsp;&nbsp;<?php echo $tourIdPackage[0]->category ?></p>
+								</div>
+								<div class="hotel_info_text">
+									<p>Package Days:<br>&nbsp;&nbsp;&nbsp;<?php echo $tourIdPackage[0]->days ?></p>
+								</div>
+								<div class="hotel_info_text">
+									<p>Price:<br> &nbsp;&nbsp;&nbsp;<span style="color: gray;">Rs.</span> <?php echo $tourIdPackage[0]->amount ?> <span>per person</span></p>
+								</div>
+								<div class="hotel_info_text">
+									<p>Details:<br>&nbsp;&nbsp;&nbsp;<?php echo $tourIdPackage[0]->description ?></p>
+								</div>
+								<div class="hotel_info_text">
+									<p>Created Date:<br>&nbsp;&nbsp;&nbsp;<?php echo $tourIdPackage[0]->created_at ?></p>
+								</div>
+
 						</div>
-			<?php } ?>
+						
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
 
 <?php require_once "footer.php";?>

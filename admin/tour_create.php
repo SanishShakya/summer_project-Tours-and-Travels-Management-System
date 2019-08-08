@@ -62,10 +62,10 @@
     else{
         $err['feature']='Enter Feature';
         }
-         if(isset($_FILES['photo']['error'])&& $_FILES['photo']['error'] ==0)
+if(isset($_FILES['photo']['error'])&& $_FILES['photo']['error'] ==0)
   {
     //size check
-    if($_FILES['photo']['size'] < 10000000){
+    if($_FILES['photo']['size'] < 9999999000){
       //type check
       $type = ['image/png','image/jpg','image/jpeg','image/gif'];
       if(in_array($_FILES['photo']['type'],$type)){
@@ -125,9 +125,9 @@
           <label for="category">Category</label>
            <select name='category' class="form-control" id="category" required="required"></br>
             <option value=''>Select Category</option>
-              <option value="family">Family</option>
-              <option value="indiviual">Indiviual</option>
-              <option value="couple">Couple</option>
+              <option value="Family">Family</option>
+              <option value="Indiviual">Indiviual</option>
+              <option value="Couple">Couple</option>
 
 
 
@@ -140,7 +140,7 @@
         </div>
 
         <div class="form-group">
-          <label for="days">Days</label>
+          <label for="days">Days/ Nights</label>
           <input type="text" class="form-control" id="days"  placeholder="Enter days" name="days" required="required">
         </div>
 

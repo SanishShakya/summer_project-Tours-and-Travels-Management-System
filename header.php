@@ -1,4 +1,5 @@
 <?php
+@session_start();
   require_once "object.php";  
 ?>
 <!DOCTYPE html>
@@ -33,9 +34,13 @@
 				<div class="row">
 					<div class="col d-flex flex-row">
 						<div class="user_box ml-auto">
-							
+							<?php if(isset($_SESSION['customer_id'])){?>
+								<div style="margin-top: 5%;"><i class="fa fa-user"></i> <?php echo $_SESSION['customer_name']?> | <a style="color: #a5a5a5;" href="logout.php"><i class="fa fa-sign-out"></i> Logout</a></div>
+
+							<?php }else{ ?>
 							<div class="user_box_login user_box_link"><a href="login.php"><i class="fa fa-sign-in"></i> login</a></div>
 							<div class="user_box_register user_box_link"><a href="register.php"><i class="fa fa-user-plus"></i> register</a></div>
+						<?php } ?>
 						</div>
 					</div>
 				</div>
@@ -53,11 +58,10 @@
 						</div>
 						<div class="main_nav_container ml-auto">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="home.php">Home</a></li>
+								<li class="main_nav_item"><a href="index.php">Home</a></li>
 								<li class="main_nav_item"><a href="tour_package.php">Package</a></li>
 								<li class="main_nav_item"><a href="about.html">about us</a></li>
-								<li class="main_nav_item"><a href="blog.html">news</a></li>
-								<li class="main_nav_item"><a href="contact.html">contact</a></li>
+								<li class="main_nav_item"><a href="enquiry.php">enquiry</a></li>
 							</ul>
 						</div>
 						<div class="content_search ml-lg-0 ml-auto">
