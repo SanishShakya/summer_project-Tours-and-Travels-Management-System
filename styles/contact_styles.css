@@ -825,12 +825,11 @@ section
 }
 .contact_form_name
 {
-	width: calc((100% - 30px) / 2);
-	margin-right: 30px;
+	width: 100%
 }
 .contact_form_email
 {
-	width: calc((100% - 30px) / 2);
+	width: 100%;
 }
 .contact_form_subject
 {

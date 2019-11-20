@@ -88,7 +88,7 @@
   }
 
         $status = $user->edit();
-     header('location:admin_list.php');
+    header('location:admin_list.php');
   }
   $users = $user->selectDataById();
   require_once "header.php"; 
@@ -118,7 +118,7 @@
         <p class="alert alert-danger text-danger">Admin Update Failed !!</p>
       <?php } ?>
 
-      <form action="" method="post" id="loginForm" enctype="multipart/form-data">
+      <form action="" method="post" id="adminForm" enctype="multipart/form-data">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" class="form-control" id="name"  placeholder="Enter name" name="name" required="required" value="<?php echo $users[0]->name?>">

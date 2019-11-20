@@ -92,7 +92,7 @@ if(count($err)==0){
                       <?php if(isset($_GET['bookmsg']) && $_GET['bookmsg'] == 1){ ?>
                         <p class="alert alert-danger text-danger">PLease Login to Access Booking</p>
                       <?php } ?>
-			<form class="login100-form validate-form" action="" method="post">
+			<form class="login100-form validate-form" id="loginForm" action="" method="post">
 				<span class="login100-form-title p-b-37">
 					Login
 				</span>
@@ -155,6 +155,25 @@ if(count($err)==0){
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+
+  <script type="text/javascript" src="js/validation/dist/jquery.validate.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $('#loginForm').validate(
+    	{
+    		rules:
+    		{
+		    password:
+		          {
+		            required: true,
+		            minlength: 8
+		          }
+    		}
+
+    	});
+    
+    });
+  </script>
 
 </body>
 </html>

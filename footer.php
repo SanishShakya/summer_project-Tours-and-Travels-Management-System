@@ -5,9 +5,9 @@
 		
 			
 				
-					<div class="copyright_content d-flex flex-row align-items-center" style="margin-left: 35%;">
+					<div class="copyright_content d-flex flex-row align-items-center" style="margin-left: 40%;">
 						<div><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+ <span>Copyright &copy; Sunshine Asian Int'l Travel & Tours <?php echo date('Y'); ?></span>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
 					</div>
 				
@@ -28,6 +28,49 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
 <script src="js/single_listing_custom.js"></script>
 <script src="js/contact_custom.js"></script>
+<script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+<script src="js/sb-admin-2.min.js"></script>
+<script type="text/javascript" src="js/validation/dist/jquery.validate.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+    	$('#contact_form').validate(
+    	{
+    		rules:
+    		{
+    		mobile:
+		          {
+		            required: true,
+		            rangelength:[10,10],
+		            min: 1
+		          },
+		    password:
+		          {
+		            required: true,
+		            minlength: 8
+		          }
+		        
+    		}
+    	});
+
+    	$('#enquiryForm').validate(
+    	{
+    		rules:
+    		{
+    		subject:
+		          {
+		            required: true,
+		            minlength: 10,
+		          },
+		    password:
+		          {
+		            required: true,
+		            minlength: 8
+		          }
+    		}
+    	});
+    });
+  </script>
 </body>
 
 </html>

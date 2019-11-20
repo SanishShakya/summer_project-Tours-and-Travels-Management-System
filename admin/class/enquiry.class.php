@@ -27,12 +27,12 @@ require_once "CRUD.php";
  	
  	function index()
  	{
- 	 	$sql = "select * from tbl_enquiry";
+ 	 	$sql = "select * from tbl_enquiry order by created_at desc";
  	 	return $this->select($sql);
  	}
  	function remove()
  	{
- 	 	$sql = "delete from tbl_tourPackage where tourId='$this->tourId'";
+ 	 	echo $sql = "delete from tbl_enquiry where enquiryId='$this->enquiryId'";
  	 	return $this->delete($sql);
  	}
  	function selectDataById()
@@ -44,5 +44,6 @@ require_once "CRUD.php";
  		$sql="update tbl_admin set  name='$this->name' , username='$this->username', email='$this->email', phone='$this->phone', address='$this->address', password='$this->password', status='$this->status', image='$this->image' where adminId='$this->adminId'";
  		return $this->update($sql);
  	}
+ 	
  }
 ?>

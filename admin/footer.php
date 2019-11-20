@@ -63,6 +63,54 @@
     $('#myTable').DataTable();
 } );
   </script>
+  <script type="text/javascript" src="js/validation/dist/jquery.validate.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+      $('#adminForm').validate(
+      {
+        rules:
+        {
+          username:
+          {
+            required:true,
+            minlength: 6
+          }, 
+          name:
+          {
+            required:true,
+            minlength: 6
+          },  
+        phone:
+              {
+                required: true,
+                rangelength:[7,10]
+              },
+        password:
+              {
+                required: true,
+                minlength: 8
+              }
+        }
+      });
+
+      $('#tourForm').validate(
+      {
+        rules:
+        {
+        packageName:
+              {
+                required: true,
+                minlength: 5,
+              },
+        amount:
+        {
+          min: 1
+        }
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

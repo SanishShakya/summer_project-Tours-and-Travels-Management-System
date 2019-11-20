@@ -1,7 +1,7 @@
 <?php
   @session_start();
   if(!isset($_SESSION['admin_id'])){
-     header('location:login.php?msg=1');
+     header('location:index.php?msg=1');
   } 
   require_once "object.php";  
 ?>
@@ -48,7 +48,7 @@
     <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.php">
         <div class="sidebar-brand-text mx-3"> <img class="img-profile rounded-circle" src="images/<?php echo $_SESSION['admin_image']?>" style="margin-top: 30%; margin-bottom: 5%; width: 50px; height: 50px;"><br><span class="mr-2 d-none d-lg-inline text-white small"><?php echo $_SESSION['admin_name']?></span></div>
       </a>
       <br>
@@ -59,7 +59,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="index.php">
+        <a class="nav-link" href="dashboard.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>

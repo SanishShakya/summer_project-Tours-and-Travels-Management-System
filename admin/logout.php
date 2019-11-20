@@ -2,5 +2,5 @@
  session_start();
  session_destroy();
  setcookie('email','',time()-1);
- header("location:login.php");
+ header("location:index.php");
 ?>

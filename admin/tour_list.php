@@ -48,7 +48,7 @@
 
                              <td>
                                <?php if($tour->status==1){?>
-                                <span calss="text text-success">Active</span>
+                                <span class="text text-success">Active</span>
                               <?php }else{?>
                                 <span class="text text-danger">De Active</span>
                              <?php } ?>
@@ -56,7 +56,7 @@
                               <td>
                                 
                               <a href="tour_view.php?tourId=<?php echo $tour->tourId?>" class="btn btn-info" title="View Details"><i class="fas fa-eye"></i></a>
-                              <!-- <a href="tour_edit.php?tourId=<?php echo $tour->tourId?>" class="btn btn-warning" title="Edit"><i class="fas fa-edit"></i></a> -->
+                              <a href="tour_edit.php?tourId=<?php echo $tour->tourId?>" class="btn btn-warning" title="Edit"><i class="fas fa-edit"></i></a> 
                               <a href="tour_delete.php?tourId=<?php echo $tour->tourId?>" class="btn btn-danger" title="Delete" onclick="return confirm('Are you sure to Delete ?')"><i class="fas fa-trash"></i></a>
                               </td>
 

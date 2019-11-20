@@ -2,8 +2,7 @@
   $action = 'Create';
   $panel = 'Package';
   $title = $panel . ' ' . $action;
-  require_once "header.php"; 
-
+  require_once "header.php";
   if(isset($_POST['btnSave']))
   {
     $err=[];
@@ -13,7 +12,7 @@
       $tour->set('packageName',$_POST['packageName']);
     }
     else{
-        $err['packageName']='Enter Category Name';
+        $err['packageName']='Enter Package Name';
         }
 
     if(isset($_POST['description'])&& !empty($_POST['description'])&& trim($_POST['description']) !='')
@@ -21,7 +20,7 @@
       $tour->set('description',$_POST['description']); 
     }
     else{
-        $err['description']='Enter News Description';
+        $err['description']='Enter Description';
         }
 
     if(isset($_POST['category'])&& !empty($_POST['category'])&& trim($_POST['category']) !='')
@@ -65,12 +64,13 @@
 if(isset($_FILES['photo']['error'])&& $_FILES['photo']['error'] ==0)
   {
     //size check
-    if($_FILES['photo']['size'] < 9999999000){
+    if($_FILES['photo']['size'] < 8388608){
       //type check
       $type = ['image/png','image/jpg','image/jpeg','image/gif'];
       if(in_array($_FILES['photo']['type'],$type)){
         //upload file
         if(move_uploaded_file($_FILES['photo']['tmp_name'],'images/' . $_FILES['photo']['name'])){
+
           $tour->set('photo',$_FILES['photo']['name']);
         }else{
           echo 'file uploaded failed';
@@ -113,7 +113,7 @@ if(isset($_FILES['photo']['error'])&& $_FILES['photo']['error'] ==0)
         <p class="alert alert-danger text-danger">Packages Insert Failed !!</p>
       <?php } ?>
 
-      <form action="" method="post" id="loginForm" enctype="multipart/form-data">
+      <form action="" method="post" id="tourForm" enctype="multipart/form-data">
 
        <div class="form-group">
           <label for="packageName">Package Name</label>

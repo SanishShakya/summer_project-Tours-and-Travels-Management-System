@@ -3,7 +3,7 @@ require_once "common.class.php";
 require_once "CRUD.php";
  class Booking extends Common
  {
- 	protected $bookingId, $date, $customerId, $comment, $tourId;
+ 	protected $bookingId, $date, $customerName, $comment, $packageName, $customerEmail;
 
  	function login()
  	{
@@ -21,18 +21,18 @@ require_once "CRUD.php";
  	}
  	function create()
  	{
- 		$sql = "insert into tbl_booking (packageName,description,amount,category,days,image,status,location,created_at,feature,created_by) values ('$this->packageName','$this->description','$this->amount','$this->category','$this->days','$this->image','$this->status','$this->location','$this->created_at','$this->feature','$this->created_by')"; 
+ 		$sql = "insert into tbl_booking (packageName,comment,customerName,date,customerEmail) values ('$this->packageName','$this->comment','$this->customerName','$this->date','$this->customerEmail')"; 
  		return $this-> insert($sql);
  	}
  	
  	function index()
  	{
- 	 	$sql = "select * from tbl_booking";
+ 	 	$sql = "select * from tbl_booking order by date desc";
  	 	return $this->select($sql);
  	}
  	function remove()
  	{
- 	 	$sql = "delete from tbl_tourPackage where tourId='$this->tourId'";
+ 	 	$sql = "delete from tbl_booking where bookingId='$this->bookingId'";
  	 	return $this->delete($sql);
  	}
  	function selectDataById()
@@ -44,5 +44,16 @@ require_once "CRUD.php";
  		$sql="update tbl_admin set  name='$this->name' , username='$this->username', email='$this->email', phone='$this->phone', address='$this->address', password='$this->password', status='$this->status', image='$this->image' where adminId='$this->adminId'";
  		return $this->update($sql);
  	}
+ 	function selectDataByIdd()
+ 	{
+ 	 $sql = "select * from tbl_booking where bookingId='$this->bookingId'";
+ 	 	return $this->select($sql);
+ 	}
+
+	function updateBookingStatus(){
+ 		$sql="update tbl_booking set  status='$this->status' where bookingId='$this->bookingId'";
+ 		return $this->update($sql);
+ 	}
+ 	
  }
 ?>

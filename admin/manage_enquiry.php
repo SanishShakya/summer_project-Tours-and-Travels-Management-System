@@ -46,11 +46,7 @@
                               <td><?php echo $enquiry->created_at?></td>
 
                              <td>
-                               <?php if($enquiry->status==1){?>
-                                <span calss="text text-success">Read</span>
-                              <?php }else{?>
-                                <span class="text text-danger">Un-read</span>
-                             <?php } ?>
+                               <a href="delete_enquiry.php?enquiryId=<?php echo $enquiry->enquiryId?>" class="btn btn-danger" title="Delete" onclick="return confirm('Are you sure to Delete ?')"><i class="fas fa-trash"></i></a>
                               </td>
                              
 

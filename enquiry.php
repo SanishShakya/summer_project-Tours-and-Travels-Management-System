@@ -1,4 +1,15 @@
-<?php
+<style type="text/css">
+ 
+  .error{
+      font-size: 1rem;
+      width:100%;
+      color:red;
+    }
+    .form-control{
+      width: 100%;
+    }
+  </style>
+  <?php
 	@session_start();
 		require_once "admin/object.php";
 
@@ -46,7 +57,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Contact</title>
+<title>Enquiry | Sunshine Asian Int'l</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Travelix Project">
@@ -73,7 +84,7 @@
 					<div class="col d-flex flex-row">
 						<div class="user_box ml-auto">
 							<?php if(isset($_SESSION['customer_id'])){?>
-								<div style="margin-top: 5%;"><i class="fa fa-user"></i> <?php echo $_SESSION['customer_name']?> | <a style="color: #a5a5a5;" href="logout.php"><i class="fa fa-sign-out"></i> Logout</a></div>
+								<div style="margin-top: 5%;"><i class="fa fa-user"></i> <?php echo $_SESSION['customer_name']?> | <a style="color: #a5a5a5;" href="logout.php" onclick="return confirm('Are you sure to Logout ?')"><i class="fa fa-sign-out"></i> Logout</a></div>
 
 							<?php }else{ ?>
 							<div class="user_box_login user_box_link"><a href="login.php"><i class="fa fa-sign-in"></i> login</a></div>
@@ -89,50 +100,23 @@
 
 		<nav class="main_nav">
 			<div class="container">
-				<div class="row">
-					<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
+				<div class="row-12">
+					<div>
 						<div class="logo_container">
-							<div class="logo"><a href="#"><img src="images/logo.png" alt="">travelix</a></div>
+							<div class="logo"><a href="index.php"><img src="images/logo.png" width="10%" height="10%" alt="" style="margin-top: 1%">Sunshine Asian Int'l</a></div>
+							<div class="hamburger" style="margin-left: 95%">
+              <i class="fa fa-bars trans_200"></i>
+            </div>
 						</div>
 						<div class="main_nav_container ml-auto">
-							<ul class="main_nav_list">
+							<ul class="main_nav_list"  style="margin-left: 50%; margin-bottom: 2%">
 								<li class="main_nav_item"><a href="index.php">home</a></li>
 								<li class="main_nav_item"><a href="tour_package.php">Package</a></li>
 								<li class="main_nav_item"><a href="about.php">about us</a></li>
 								<li class="main_nav_item"><a href="enquiry.php">Enquiry</a></li>
 							</ul>
 						</div>
-						<div class="content_search ml-lg-0 ml-auto">
-							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-							width="17px" height="17px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-								<g>
-									<g>
-										<g>
-											<path class="mag_glass" fill="#FFFFFF" d="M78.438,216.78c0,57.906,22.55,112.343,63.493,153.287c40.945,40.944,95.383,63.494,153.287,63.494
-											s112.344-22.55,153.287-63.494C489.451,329.123,512,274.686,512,216.78c0-57.904-22.549-112.342-63.494-153.286
-											C407.563,22.549,353.124,0,295.219,0c-57.904,0-112.342,22.549-153.287,63.494C100.988,104.438,78.439,158.876,78.438,216.78z
-											M119.804,216.78c0-96.725,78.69-175.416,175.415-175.416s175.418,78.691,175.418,175.416
-											c0,96.725-78.691,175.416-175.416,175.416C198.495,392.195,119.804,313.505,119.804,216.78z"/>
-										</g>
-									</g>
-									<g>
-										<g>
-											<path class="mag_glass" fill="#FFFFFF" d="M6.057,505.942c4.038,4.039,9.332,6.058,14.625,6.058s10.587-2.019,14.625-6.058L171.268,369.98
-											c8.076-8.076,8.076-21.172,0-29.248c-8.076-8.078-21.172-8.078-29.249,0L6.057,476.693
-											C-2.019,484.77-2.019,497.865,6.057,505.942z"/>
-										</g>
-									</g>
-								</g>
-							</svg>
-						</div>
-
-						<form id="search_form" class="search_form bez_1">
-							<input type="search" class="search_content_input bez_1">
-						</form>
-						
-						<div class="hamburger">
-							<i class="fa fa-bars trans_200"></i>
-						</div>
+							
 					</div>
 				</div>
 			</div>	
@@ -143,13 +127,12 @@
 	<div class="menu trans_500">
 		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
 			<div class="menu_close_container"><div class="menu_close"></div></div>
-			<div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
-			<ul>
-				<li class="menu_item"><a href="index.html">home</a></li>
-				<li class="menu_item"><a href="about.html">about us</a></li>
-				<li class="menu_item"><a href="offers.html">offers</a></li>
-				<li class="menu_item"><a href="blog.html">news</a></li>
-				<li class="menu_item"><a href="#">contact</a></li>
+			<div class="logo menu_logo"><a href="index.php"><img src="images/logo.png"  width="100%" heigth="100%" alt=""></a></div>
+			<ul class="main_nav_list">
+				<li class="main_nav_item"><a href="index.php">home</a></li>
+				<li class="main_nav_item"><a href="tour_package.php">Package</a></li>
+				<li class="main_nav_item"><a href="about.php">about us</a></li>
+				<li class="main_nav_item"><a href="enquiry.php">Enquiry</a></li>
 			</ul>
 		</div>
 	</div>
@@ -157,9 +140,9 @@
 	<!-- Home -->
 
 	<div class="home">
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/contact_background.jpg"></div>
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/pokhara.jpg"></div>
 		<div class="home_content">
-			<div class="home_title">Enquiry Us</div>
+			<div class="home_title" style="color: #1660A1;">Enquiry Us</div>
 		</div>
 	</div>
 
@@ -179,12 +162,15 @@
 						     <?php if(isset($status) && $status == false){ ?>
 						        <p class="alert alert-danger text-danger">Enquiry Insert Failed !!</p>
 						    <?php } ?>
-						<form action="#" id="contact_form" class="contact_form text-center" method="post">
-							<input type="text" id="contact_form_name" class="contact_form_name input_field" name="name" placeholder="Name" required="required" data-error="Name is required.">
-							<input type="text" id="contact_form_email" class="contact_form_email input_field" name="email" placeholder="E-mail" required="required" data-error="Email is required.">
-							<input type="text" id="contact_form_subject" class="contact_form_subject input_field" name="subject" placeholder="Subject" required="required" data-error="Subject is required.">
-							<textarea id="contact_form_message" class="text_field contact_form_message" name="description" rows="4" placeholder="Description" required="required" data-error="Please, write us a message."></textarea>
+
+						<form action="#" id="enquiryForm" class="contact_form text-center" method="post">
+
+							<input type="text" id="contact_form_name" class="contact_form_name input_field" name="name" placeholder="Name" data-error="Name is required." required=""><br>
+							<input type="email" id="contact_form_email" class="contact_form_email input_field" name="email" placeholder="E-mail" data-error="Email is required." required=""><br>
+							<input type="text" id="contact_form_subject" class="contact_form_subject input_field" name="subject" placeholder="Subject" data-error="Subject is required." required="required"><br>
+							<textarea id="contact_form_message" class="text_field contact_form_message" name="description" rows="4" placeholder="Description" data-error="Please, write us a message." required="required"></textarea><br>
 							<button type="submit" id="form_submit_button" name="btnEnquiry" class="form_submit_button button trans_200">Send Enquiry<span></span><span></span><span></span></button>
+
 						</form>
 					</div>
 
@@ -239,6 +225,5 @@
 		</div>
 	</div>
 
-	
 
 <?php require_once "footer.php";?>

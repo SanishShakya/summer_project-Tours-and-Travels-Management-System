@@ -67,7 +67,7 @@
    if(isset($_FILES['photo']['error'])&& $_FILES['photo']['error'] ==0)
   {
     //size check
-    if($_FILES['photo']['size'] < 10000000){
+    if($_FILES['photo']['size'] < 1000000){
       //type check
       $type = ['image/png','image/jpg','image/jpeg','image/gif'];
       if(in_array($_FILES['photo']['type'],$type)){
@@ -112,7 +112,7 @@
         <p class="alert alert-danger text-danger">Admin Insert Failed !!</p>
       <?php } ?>
 
-      <form action="" method="post" id="loginForm" enctype="multipart/form-data">
+      <form action="" method="post" id="adminForm" enctype="multipart/form-data">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" class="form-control" id="name"  placeholder="Enter name" name="name" required="required">

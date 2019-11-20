@@ -1,3 +1,14 @@
+<style type="text/css">
+ 
+  .error{
+      font-size: 1rem;
+      width:100%;
+      color:red;
+    }
+    .form-control{
+      width: 100%;
+    }
+  </style>
 <?php
 require_once "header.php";
 
@@ -32,14 +43,12 @@ require_once "header.php";
 
   if(isset($_POST['mobile'])&& !empty($_POST['mobile'])&& trim($_POST['mobile']) !='')
   {
-  	if(strlen($_POST['mobile'])<10){
-  		$err['mobile']="Mobile number must be 10 numbers";
-  	}else{
+  	
     $customer->set('mobile',$_POST['mobile']); 
-}
-  }else{
+  }
+  else{
       $err['mobile']='Enter Mobile';
-      }
+  }
 
   if(isset($_POST['address'])&& !empty($_POST['address'])&& trim($_POST['address']) !='')
   {
@@ -87,32 +96,32 @@ require_once "header.php";
 					<br>
 					<br>
 					<div class="contact_form_container">
-						<div class="contact_title">REGISTER</div><br>
+						<div class="contact_title"><center>REGISTER</center></div><br>
 						<?php if(isset($status) && $status == true){ ?>
         <p class="alert alert-success text-success">Customer Registration Success !!</p>
       <?php } ?>
       <?php if(isset($status) && $status == false){ ?>
         <p class="alert alert-danger text-danger">Customer Registration Failed !!</p>
       <?php } ?>
-						<form action="#" method="post" id="contact_form" class="contact_form">
-							<input type="text" id="contact_form_name" class="contact_form_name input_field" name="name" placeholder="Full Name" required="required" data-error="Name is required.">
+						<form action="#" method="post" id="contact_form" class="contact_form" validate="">
+							<input type="text" id="contact_form_name" class="contact_form_name input_field" name="name" placeholder="Full Name" required="" data-error="Name is required."><br>
 
-							<input type="text" id="contact_form_username" class="contact_form_username input_field" name="username" placeholder="Username" required="required" data-error="Password is required.">
+							<input type="text" id="contact_form_username" class="contact_form_username input_field" name="username" placeholder="Username" required="" data-error="Password is required."><br>
 
-							<input type="password" id="contact_form_password" class="contact_form_passsword input_field" name="password" placeholder="Password" required="required" data-error="Password is required.">
+							<input type="password" id="contact_form_password" class="contact_form_passsword input_field" name="password" placeholder="Password" required="" data-error="Password is required."><br>
 
-							<input type="email" id="contact_form_email" class="contact_form_email input_field" name="email" placeholder="E-mail" required="required" data-error="Email is required.">
+							<input type="email" id="contact_form_email" class="contact_form_email input_field" name="email" placeholder="E-mail" required="" data-error="Email is required."><br>
 
 							
-							<input type="text" id="contact_form_address" class="contact_form_address input_field" name="address" placeholder="Address" required="required" data-error="address is required.">
+							<input type="text" id="contact_form_address" class="contact_form_address input_field" name="address" placeholder="Address" required="" data-error="address is required."><br>
 
 													
-							<input type="number" id="contact_form_mobile" class="contact_form_mobile input_field" name ="mobile" placeholder="Mobile" required="required" data-error="address is required."><br><br><br><br><br><br>
+							<input type="number" id="contact_form_mobile" class="contact_form_mobile input_field" name ="mobile" placeholder="Mobile" required="" data-error="address is required."><br><br><br><br><br><br>
 					
-							<input type="radio" name="gender" value="Male"><label id="contact_form_gender" class="contact_form_gender input_field">  Male</label>
-							<input type="radio" name="gender" value="Male"><label id="contact_form_gender" class="contact_form_gender input_field">Female</label><br>
+							<input type="radio" name="gender" value="Male" checked=""><label id="contact_form_gender" class="contact_form_gender input_field">  Male</label>
+							<input type="radio" name="gender" value="Female"><label id="contact_form_gender" class="contact_form_gender input_field">Female</label><br>
 
-							<button type="submit" id="form_submit_button" style="margin-left: 20%" name="btnRegister" class="form_submit_button button">Sign Up<span></span><span></span><span></span></button>
+							<button type="submit" id="form_submit_button" style="margin-left: 35%" name="btnRegister" class="form_submit_button button">Sign Up<span></span><span></span><span></span></button>
 						</form>
 					</div>
 				</div>

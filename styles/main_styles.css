@@ -1799,35 +1799,35 @@ section
 }
 .contact_form_name
 {
-	width: calc((100% - 30px) / 2);
+	width: 100%;
 	margin-right: 30px;
 	border-bottom: solid 2px #e1e1e1;
 }
 .contact_form_username
 {
-	width: calc((100% - 30px) / 2);
+	width: 100%;
 	border-bottom: solid 2px #e1e1e1;
 }
 #contact_form_password	
 {
-	width: calc((100% - 30px) / 2);
+	width: 100%;
 	margin-right: 30px;
 	border-bottom: solid 2px #e1e1e1;
 }
 .contact_form_address
 {
-	width: calc((100% - 30px) / 2);
+	width: 100%;
 	margin-right: 30px;
 	border-bottom: solid 2px #e1e1e1;
 }
 .contact_form_email
 {
-	width: calc((100% - 30px) / 2);
+	width: 100%;
 	border-bottom: solid 2px #e1e1e1;
 }
 .contact_form_mobile
 {
-	width: calc((100% - 30px) / 2);
+	width: 100%;
 	border-bottom: solid 2px #e1e1e1;
 }
 .contact_form_gender
